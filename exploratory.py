@@ -13,20 +13,29 @@ import seaborn as sns
 # In[ ]:
 
 
-df = pd.read(#dataset)
+df = pd.read_csv('WaitDataF1.csv')
+df = df.sort_index(axis=0,ascending=False,ignore_index=True)
 
 
 # In[ ]:
 
 
-df.isna().sum()
+print(df.isna().sum())
 
 
 # In[ ]:
 
 
-sns.distplot(df[#label])
+sns.distplot(df['Wait'])
 
+
+# In[ ]:
+    
+correlation = df.corr()
+
+# In[ ]:
+    
+desc = df.describe()
 
 # In[ ]:
 
