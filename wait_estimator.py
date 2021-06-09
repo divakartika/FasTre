@@ -8,14 +8,11 @@ import numpy as np
 import pandas as pd
 from sklearn.metrics import mean_squared_error,mean_absolute_error,explained_variance_score
 from sklearn.model_selection import train_test_split
-# from sklearn.preprocessing import MinMaxScaler
 
 import tensorflow as tf
 from tensorflow import keras
-from tensorflow.keras import regularizers
 from tensorflow.keras.layers.experimental import preprocessing
-from tensorflow.keras.layers import LSTM, Dropout, Flatten, Dense
-# from tensorflow.keras.callbacks import EarlyStopping
+from tensorflow.keras.layers import Dense
 
 print(tf.__version__)
 
@@ -56,7 +53,7 @@ model = keras.Sequential([
 model.compile(optimizer='adam', 
               loss='mae'
               )
-
+print('\n')
 model.summary()
 
 #%%
@@ -88,16 +85,16 @@ print('RMSE =', rmse)
 evs = explained_variance_score(y_val,predictions)
 print('EVS =',evs)
 
-predictions = model.predict(X_val.head(5))
+predictions = model.predict(X_val.head(1))
 
 print('prediction =',predictions)
-print('label =', y_val.values[:5])
+print('label =', y_val.values[0])
 
 #PREDICT WITH TEST SET
-predictions = model.predict(X_test.head(5))
+predictions = model.predict(X_test.head(1))
 
 print('test set prediction =',predictions)
-print('test set label =', y_test.values[:5])
+print('test set label =', y_test.values[0])
 
 #%%
 
